@@ -532,7 +532,7 @@ def dashboard_page():
                 title=f"30-Day Prediction for {selected_product}",
                 xaxis_title="Date",
                 yaxis_title="Predicted Quantity",
-                height=500
+                height=400
             )
             
             st.plotly_chart(fig_line, use_container_width=True)
