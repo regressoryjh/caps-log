@@ -1,6 +1,5 @@
 # app.py
 import streamlit as st
-from data_loader import initialize_data
 from login import login_page
 from dashboard import dashboard_page
 
@@ -10,10 +9,6 @@ def main():
         page_icon="📦",
         layout="wide"
     )
-    
-    # Inisialisasi data
-    if not initialize_data():
-        st.stop()
     
     # Manajemen session state
     if "login_status" not in st.session_state:
