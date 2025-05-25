@@ -407,7 +407,7 @@ def dashboard_page():
                     # Mengatur tampilan teks dan layout
                     fig_bar.update_traces(
                         texttemplate='%{text:,.2f}',    # Format teks
-                        textposition='outside',         # Posisi teks di luar bar
+                        textposition='inside',         # Posisi teks di dalam bar
                         textfont_size=12,               # Ukuran font
                     )
                     fig_bar.update_layout(height=400, margin=dict(l=20, r=20, t=40, b=20))  # Menyesuaikan margin agar teks tidak terpotong)
