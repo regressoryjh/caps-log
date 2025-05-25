@@ -237,7 +237,7 @@ def dashboard_page():
             """Helper function to create consistent filter panel"""
             with st.expander("🔍 Filter Options", expanded=True):
                 # Column selection
-                default_cols = ['Tanggal', 'Nama Stok', 'Predicted Quantity', 'Lower Bound', 'Upper Bound']
+                default_cols = ['tanggal', 'nama_stok', 'predicted_quantity', 'lower_bound', 'upper_bound']
                 cols = st.multiselect(
                     "Columns to display:",
                     options=df.columns,
