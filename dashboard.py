@@ -236,11 +236,24 @@ def dashboard_page():
         def create_filter_panel(df, tab_key):
             """Helper function to create consistent filter panel"""
             with st.expander("🔍 Filter Options", expanded=True):
-                # Column selection
+                # Column selection with display names
+                column_display_names = {
+                    'tanggal': 'Tanggal',
+                    'nama_stok': 'Nama Stok',
+                    'predicted_quantity': 'Predicted Quantity',
+                    'lower_bound': 'Lower Bound',
+                    'upper_bound': 'Upper Bound',
+                    'kategori': 'Kategori'
+                }
+                
+                # Get available columns from the dataframe that exist in our display names mapping
+                available_columns = [col for col in df.columns if col in column_display_names]
+                
                 default_cols = ['tanggal', 'nama_stok', 'predicted_quantity', 'lower_bound', 'upper_bound']
                 cols = st.multiselect(
                     "Columns to display:",
-                    options=df.columns,
+                    options=available_columns,
+                    format_func=lambda x: column_display_names[x],
                     default=default_cols,
                     key=f"cols_{tab_key}"
                 )
@@ -285,6 +298,8 @@ def dashboard_page():
             
             return cols, date_range, products, qty_range
 
+        # Then modify the dataframe display part in each tab to use the display names:
+
         with tab1:
             df_pasti_dibeli = result_forecast[result_forecast['kategori'] == 'Pasti Dibeli']
             if not df_pasti_dibeli.empty:
@@ -308,8 +323,18 @@ def dashboard_page():
                 ]
                 
                 with col_table:
+                    # Create a copy of the dataframe with renamed columns for display
+                    display_df = filtered_df[cols].round(2).rename(columns={
+                        'tanggal': 'Tanggal',
+                        'nama_stok': 'Nama Stok',
+                        'predicted_quantity': 'Predicted Quantity',
+                        'lower_bound': 'Lower Bound',
+                        'upper_bound': 'Upper Bound',
+                        'kategori': 'Kategori'
+                    })
+                    
                     st.dataframe(
-                        filtered_df[cols].round(2),
+                        display_df,
                         use_container_width=True,
                         height=600
                     )
@@ -322,13 +347,14 @@ def dashboard_page():
                         orientation='h',
                         title="Top 10 Products to Buy",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
-                        category_orders={"y": top_products.index.tolist()}  # Mempertahankan urutan dari sort_values
+                        category_orders={"y": top_products.index.tolist()}
                     )
                     fig_bar.update_layout(height=400)
                     st.plotly_chart(fig_bar, use_container_width=True)
             else:
                 st.info("No products in 'Pasti Dibeli' category")
 
+        # Repeat the same modification for tab2 and tab3
         with tab2:
             df_ragu = result_forecast[result_forecast['kategori'] == 'Ragu']
             if not df_ragu.empty:
@@ -352,8 +378,17 @@ def dashboard_page():
                 ]
                 
                 with col_table:
+                    display_df = filtered_df[cols].round(2).rename(columns={
+                        'tanggal': 'Tanggal',
+                        'nama_stok': 'Nama Stok',
+                        'predicted_quantity': 'Predicted Quantity',
+                        'lower_bound': 'Lower Bound',
+                        'upper_bound': 'Upper Bound',
+                        'kategori': 'Kategori'
+                    })
+                    
                     st.dataframe(
-                        filtered_df[cols].round(2),
+                        display_df,
                         use_container_width=True,
                         height=600
                     )
@@ -383,13 +418,23 @@ def dashboard_page():
                 ]
                 
                 with col_table:
+                    display_df = filtered_df[cols].round(2).rename(columns={
+                        'tanggal': 'Tanggal',
+                        'nama_stok': 'Nama Stok',
+                        'predicted_quantity': 'Predicted Quantity',
+                        'lower_bound': 'Lower Bound',
+                        'upper_bound': 'Upper Bound',
+                        'kategori': 'Kategori'
+                    })
+                    
                     st.dataframe(
-                        filtered_df[cols].round(2),
+                        display_df,
                         use_container_width=True,
                         height=600
                     )
             else:
                 st.info("No products in 'Tidak Perlu Dibeli' category")
+
         
         # Time series visualization
         st.header("📊 Prediction Trends Over Time")
