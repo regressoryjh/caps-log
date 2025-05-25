@@ -413,7 +413,7 @@ def dashboard_page():
                         insidetextfont=dict(size=12),  # Ukuran font
                         marker_color='rgb(55, 83, 109)'  # Warna bar yang gelap
                     )
-                    fig_bar.update_layout(height=400)  # Menyesuaikan margin agar teks tidak terpotong)
+                    fig_bar.update_layout(height=450)  # Menyesuaikan margin agar teks tidak terpotong)
                     st.plotly_chart(fig_bar, use_container_width=True)
 
             else:
