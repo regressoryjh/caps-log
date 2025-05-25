@@ -395,7 +395,7 @@ def dashboard_page():
                     
                     # Top products visualization
                     top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).head(10)
-                    fig_bar = px.bar(
+                    fig_line = px.line(
                         x=top_products.values,
                         y=top_products.index,
                         orientation='h',
@@ -403,8 +403,8 @@ def dashboard_page():
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
                     )
-                    fig_bar.update_layout(height=400)
-                    st.plotly_chart(fig_bar, use_container_width=True)
+                    fig_line.update_layout(height=400)
+                    st.plotly_chart(fig_line, use_container_width=True)
 
             else:
                 st.info("No products in 'Ragu' category")
