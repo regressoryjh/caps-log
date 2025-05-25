@@ -453,7 +453,7 @@ def dashboard_page():
                         x=top_products.values,
                         y=top_products.index,
                         orientation='h',
-                        title="Top 10 Products to Buy",
+                        title="Bottom 10 Products to Buy",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
                     )
