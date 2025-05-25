@@ -321,7 +321,8 @@ def dashboard_page():
                         y=top_products.index,
                         orientation='h',
                         title="Top 10 Products to Buy",
-                        labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'}
+                        labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
+                        category_orders={"y": top_products.index.tolist()}  # Mempertahankan urutan dari sort_values
                     )
                     fig_bar.update_layout(height=400)
                     st.plotly_chart(fig_bar, use_container_width=True)
