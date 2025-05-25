@@ -394,7 +394,7 @@ def dashboard_page():
                     )
                     
                     # Top products visualization
-                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).all()
+                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False)
                     fig_bar = px.bar(
                         x=top_products.values,
                         y=top_products.index,
