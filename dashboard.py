@@ -219,7 +219,7 @@ def dashboard_page():
         fig_pie = px.pie(
             values=product_counts.values, 
             names=category_counts.index,
-            title="Distribution of Purchase Recommendations",
+            title="Distribution of Purchase Recommendations Based on Product",
             color_discrete_map={
                 'Pasti Dibeli': '#00ff00',
                 'Ragu': '#ffff00', 
