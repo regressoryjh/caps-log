@@ -448,7 +448,7 @@ def dashboard_page():
                     )
                     
                     # Top products visualization
-                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).head(10)
+                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=True).head(10)
                     fig_bar = px.bar(
                         x=top_products.values,
                         y=top_products.index,
@@ -459,7 +459,7 @@ def dashboard_page():
                     )
                     fig_bar.update_layout(height=400)
                     st.plotly_chart(fig_bar, use_container_width=True)
-                    
+
             else:
                 st.info("No products in 'Tidak Perlu Dibeli' category")
 
