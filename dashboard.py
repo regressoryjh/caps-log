@@ -442,7 +442,7 @@ def dashboard_page():
                         height=600
                     )
                     
-                    # Top products visualization
+                    # Bottom products visualization
                     top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=True).head(10)
                     fig_bar = px.bar(
                         x=top_products.values,
@@ -452,7 +452,6 @@ def dashboard_page():
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
                     )
-                    # Mengatur tampilan teks dan layout
                     fig_bar.update_traces(marker_color='rgb(55, 83, 109)')
                     fig_bar.update_layout(height=450)
                     st.plotly_chart(fig_bar, use_container_width=True)
