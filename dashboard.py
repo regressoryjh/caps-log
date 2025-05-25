@@ -392,6 +392,20 @@ def dashboard_page():
                         use_container_width=True,
                         height=600
                     )
+                    
+                    # Top products visualization
+                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).head(10)
+                    fig_bar = px.bar(
+                        x=top_products.values,
+                        y=top_products.index,
+                        orientation='h',
+                        title="Top 10 Products to Buy",
+                        labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
+                        category_orders={"y": top_products.index.tolist()}
+                    )
+                    fig_bar.update_layout(height=400)
+                    st.plotly_chart(fig_bar, use_container_width=True)
+
             else:
                 st.info("No products in 'Ragu' category")
 
@@ -432,6 +446,20 @@ def dashboard_page():
                         use_container_width=True,
                         height=600
                     )
+                    
+                    # Top products visualization
+                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).head(10)
+                    fig_bar = px.bar(
+                        x=top_products.values,
+                        y=top_products.index,
+                        orientation='h',
+                        title="Top 10 Products to Buy",
+                        labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
+                        category_orders={"y": top_products.index.tolist()}
+                    )
+                    fig_bar.update_layout(height=400)
+                    st.plotly_chart(fig_bar, use_container_width=True)
+                    
             else:
                 st.info("No products in 'Tidak Perlu Dibeli' category")
 
