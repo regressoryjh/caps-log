@@ -6,4 +6,4 @@ gdown
 scikit-learn
 matplotlib
 seaborn
-sqlite3
+plotly
