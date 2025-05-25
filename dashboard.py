@@ -401,7 +401,7 @@ def dashboard_page():
                         orientation='h',
                         title="Top 10 Products With Low Possibility to Restock",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
-                        category_orders={"y": top_products.index.tolist()}
+                        category_orders={"y": top_products.index.tolist()},
                         text=top_products.values.round(2),  # Menambahkan nilai di samping bar
                     )
                     # Mengatur tampilan teks dan layout
