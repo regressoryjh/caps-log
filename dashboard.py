@@ -402,18 +402,18 @@ def dashboard_page():
                         title="Top 10 Products With Low Possibility to Restock",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()},
-                        text=top_products.values.round(2),  # Menambahkan nilai di samping bar
+                        text=top_products.values.round(2)
                     )
                     # Mengatur tampilan teks dan layout
                     fig_bar.update_traces(
                         texttemplate='%{text}',
-                        textposition='inside',  # Teks di dalam bar
-                        textfont_color='white', # Warna teks putih agar kontras
-                        insidetextanchor='end',  # Anchor teks di ujung (end) dari bar
-                        insidetextfont=dict(size=12),  # Ukuran font
-                        marker_color='rgb(55, 83, 109)'  # Warna bar yang gelap
+                        textposition='inside',  
+                        textfont_color='white', 
+                        insidetextanchor='end',  
+                        insidetextfont=dict(size=12),  
+                        marker_color='rgb(55, 83, 109)'  
                     )
-                    fig_bar.update_layout(height=450)  # Menyesuaikan margin agar teks tidak terpotong)
+                    fig_bar.update_layout(height=450)  
                     st.plotly_chart(fig_bar, use_container_width=True)
 
             else:
