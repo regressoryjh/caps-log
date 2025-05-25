@@ -465,7 +465,17 @@ def dashboard_page():
                         orientation='h',
                         title="Bottom 10 Products to Buy",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
-                        category_orders={"y": top_products.index.tolist()}
+                        category_orders={"y": top_products.index.tolist()},
+                        text=top_products.values.round(2)
+                    )
+                    # Mengatur tampilan teks dan layout
+                    fig_bar.update_traces(
+                        texttemplate='%{text}',
+                        textposition='inside',  
+                        textfont_color='white', 
+                        insidetextanchor='end',  
+                        insidetextfont=dict(size=12),  
+                        marker_color='rgb(55, 83, 109)'  
                     )
                     fig_bar.update_layout(height=400)
                     st.plotly_chart(fig_bar, use_container_width=True)
