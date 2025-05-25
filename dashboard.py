@@ -190,7 +190,7 @@ def dashboard_page():
             result_forecast, metrics = train_and_predict(df, produk_pilihan)
         
         # Display results
-        st.success("✅ Model trained successfully!")
+        # st.success("✅ Model trained successfully!")
         
         # Prediction Results
         st.header("🔮 30-Day Prediction Results")
