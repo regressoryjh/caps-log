@@ -406,12 +406,12 @@ def dashboard_page():
                     )
                     # Mengatur tampilan teks dan layout
                     fig_bar.update_traces(
-                        texttemplate='<b>%{text}</b>',   # Format teks (bold)
-                        textposition='inside',
-                        textfont_color='black',
-                        insidetextanchor='middle',
-                        marker_color='rgba(50, 100, 200, 0.7)',  # Warna bar semi-transparan
-                        textfont_size=12,
+                        texttemplate='%{text}',
+                        textposition='inside',  # Teks di dalam bar
+                        textfont_color='white', # Warna teks putih agar kontras
+                        insidetextanchor='end',  # Anchor teks di ujung (end) dari bar
+                        insidetextfont=dict(size=12),  # Ukuran font
+                        marker_color='rgb(55, 83, 109)'  # Warna bar yang gelap
                     )
                     fig_bar.update_layout(height=400)  # Menyesuaikan margin agar teks tidak terpotong)
                     st.plotly_chart(fig_bar, use_container_width=True)
