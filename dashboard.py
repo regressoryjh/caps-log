@@ -358,7 +358,7 @@ def dashboard_page():
                         insidetextfont=dict(size=12),  
                         marker_color='rgb(55, 83, 109)'  
                     )
-                    fig_bar.update_layout(height=400)
+                    fig_bar.update_layout(height=450)
                     st.plotly_chart(fig_bar, use_container_width=True)
             else:
                 st.info("No products in 'Pasti Dibeli' category")
@@ -477,7 +477,7 @@ def dashboard_page():
                     )
                     # Mengatur tampilan teks dan layout
                     fig_bar.update_traces(marker_color='rgb(55, 83, 109)')
-                    fig_bar.update_layout(height=400)
+                    fig_bar.update_layout(height=450)
                     st.plotly_chart(fig_bar, use_container_width=True)
 
             else:
@@ -532,7 +532,7 @@ def dashboard_page():
                 title=f"30-Day Prediction for {selected_product}",
                 xaxis_title="Date",
                 yaxis_title="Predicted Quantity",
-                height=400
+                height=500
             )
             
             st.plotly_chart(fig_line, use_container_width=True)
