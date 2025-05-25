@@ -345,7 +345,7 @@ def dashboard_page():
                         x=top_products.values,
                         y=top_products.index,
                         orientation='h',
-                        title="Products With High Possibility to Restock",
+                        title="Top 10 Products With High Possibility to Restock",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
                     )
@@ -394,12 +394,12 @@ def dashboard_page():
                     )
                     
                     # Top products visualization
-                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False)
+                    top_products = filtered_df.groupby('nama_stok')['predicted_quantity'].sum().sort_values(ascending=False).head(10)
                     fig_bar = px.bar(
                         x=top_products.values,
                         y=top_products.index,
                         orientation='h',
-                        title="Products With Low Possibility to Restock",
+                        title="Top 10 Products With Low Possibility to Restock",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
                     )
