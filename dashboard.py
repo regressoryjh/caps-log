@@ -402,8 +402,15 @@ def dashboard_page():
                         title="Top 10 Products With Low Possibility to Restock",
                         labels={'x': 'Total Predicted Quantity', 'y': 'Product Name'},
                         category_orders={"y": top_products.index.tolist()}
+                        text=top_products.values.round(2),  # Menambahkan nilai di samping bar
                     )
-                    fig_bar.update_layout(height=400)
+                    # Mengatur tampilan teks dan layout
+                    fig_bar.update_traces(
+                        texttemplate='%{text:,.2f}',    # Format teks
+                        textposition='outside',         # Posisi teks di luar bar
+                        textfont_size=12,               # Ukuran font
+                    )
+                    fig_bar.update_layout(height=400, margin=dict(l=20, r=20, t=40, b=20))  # Menyesuaikan margin agar teks tidak terpotong)
                     st.plotly_chart(fig_bar, use_container_width=True)
 
             else:
