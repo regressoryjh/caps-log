@@ -130,6 +130,16 @@ def dashboard_page():
             mse = mean_squared_error(y_test, test_mean)
             rmse = np.sqrt(mse)
             r2 = r2_score(y_test, test_mean)
+
+            # Print metrics to terminal
+            print(f"\n{'='*50}")
+            print(f"MODEL EVALUATION METRICS")
+            print(f"{'='*50}")
+            print(f"MAE (Mean Absolute Error): {mae:.4f}")
+            print(f"MSE (Mean Squared Error): {mse:.4f}")
+            print(f"RMSE (Root Mean Squared Error): {rmse:.4f}")
+            print(f"R² (R-squared Score): {r2:.4f}")
+            print(f"{'='*50}\n")
             
             # Future predictions
             future_dates = pd.date_range(start=pd.Timestamp.today(), periods=30)
